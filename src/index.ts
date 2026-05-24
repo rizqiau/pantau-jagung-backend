@@ -33,7 +33,10 @@ app.get("/", (req: Request, res: Response) => {
 app.post("/api/users/login", AuthController.login);
 
 // --- API ENDPOINTS DASHBOARD ---
-app.get("/api/dashboard/mandor/:mandorId", DashboardController.getMandorDashboard);
+app.get(
+  "/api/dashboard/mandor/:mandorId",
+  DashboardController.getMandorDashboard,
+);
 app.get("/api/dashboard/asisten", DashboardController.getAsistenDashboard);
 
 // --- API ENDPOINTS CUACA ---
@@ -96,3 +99,6 @@ app.get("/api/reports/download-pdf", ReportController.downloadPdf);
 app.listen(PORT, () => {
   console.log(`[Server]: Berjalan di http://localhost:${PORT}`);
 });
+
+// Di bagian paling bawah src/index.ts
+export default app;

@@ -16,7 +16,8 @@ export class MaterialController {
     }
     static async getAll(req, res) {
         try {
-            const listMaterial = await MaterialUseCase.getAllMaterials();
+            const kategori = req.query.kategori;
+            const listMaterial = await MaterialUseCase.getAllMaterials(kategori);
             res.status(200).json({ success: true, data: listMaterial });
         }
         catch (error) {

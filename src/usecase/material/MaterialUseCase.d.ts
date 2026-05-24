@@ -9,7 +9,7 @@ export declare class MaterialUseCase {
         satuan: string;
         stok: number;
     }>;
-    static getAllMaterials(): Promise<{
+    static getAllMaterials(kategori?: string): Promise<{
         id: string;
         createdAt: Date;
         updatedAt: Date;

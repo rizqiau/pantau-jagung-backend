@@ -26,8 +26,10 @@ export class MaterialUseCase {
         });
     }
     // 2. Ambil Semua Material (Untuk Dropdown di Aplikasi Android)
-    static async getAllMaterials() {
+    static async getAllMaterials(kategori) {
+        const whereClause = kategori ? { kategori } : {};
         return await prisma.katalogMaterial.findMany({
+            where: whereClause,
             orderBy: { namaMaterial: "asc" },
         });
     }

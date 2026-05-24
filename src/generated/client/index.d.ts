@@ -2502,6 +2502,7 @@ export namespace Prisma {
   export type LahanMinAggregateOutputType = {
     id: string | null
     namaLahan: string | null
+    varietas: string | null
     latitude: number | null
     longitude: number | null
     luasTotal: number | null
@@ -2512,6 +2513,7 @@ export namespace Prisma {
   export type LahanMaxAggregateOutputType = {
     id: string | null
     namaLahan: string | null
+    varietas: string | null
     latitude: number | null
     longitude: number | null
     luasTotal: number | null
@@ -2522,6 +2524,7 @@ export namespace Prisma {
   export type LahanCountAggregateOutputType = {
     id: number
     namaLahan: number
+    varietas: number
     latitude: number
     longitude: number
     luasTotal: number
@@ -2546,6 +2549,7 @@ export namespace Prisma {
   export type LahanMinAggregateInputType = {
     id?: true
     namaLahan?: true
+    varietas?: true
     latitude?: true
     longitude?: true
     luasTotal?: true
@@ -2556,6 +2560,7 @@ export namespace Prisma {
   export type LahanMaxAggregateInputType = {
     id?: true
     namaLahan?: true
+    varietas?: true
     latitude?: true
     longitude?: true
     luasTotal?: true
@@ -2566,6 +2571,7 @@ export namespace Prisma {
   export type LahanCountAggregateInputType = {
     id?: true
     namaLahan?: true
+    varietas?: true
     latitude?: true
     longitude?: true
     luasTotal?: true
@@ -2663,6 +2669,7 @@ export namespace Prisma {
   export type LahanGroupByOutputType = {
     id: string
     namaLahan: string
+    varietas: string | null
     latitude: number
     longitude: number
     luasTotal: number
@@ -2692,6 +2699,7 @@ export namespace Prisma {
   export type LahanSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     namaLahan?: boolean
+    varietas?: boolean
     latitude?: boolean
     longitude?: boolean
     luasTotal?: boolean
@@ -2704,6 +2712,7 @@ export namespace Prisma {
   export type LahanSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     namaLahan?: boolean
+    varietas?: boolean
     latitude?: boolean
     longitude?: boolean
     luasTotal?: boolean
@@ -2714,6 +2723,7 @@ export namespace Prisma {
   export type LahanSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     namaLahan?: boolean
+    varietas?: boolean
     latitude?: boolean
     longitude?: boolean
     luasTotal?: boolean
@@ -2724,6 +2734,7 @@ export namespace Prisma {
   export type LahanSelectScalar = {
     id?: boolean
     namaLahan?: boolean
+    varietas?: boolean
     latitude?: boolean
     longitude?: boolean
     luasTotal?: boolean
@@ -2731,7 +2742,7 @@ export namespace Prisma {
     updatedAt?: boolean
   }
 
-  export type LahanOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "namaLahan" | "latitude" | "longitude" | "luasTotal" | "createdAt" | "updatedAt", ExtArgs["result"]["lahan"]>
+  export type LahanOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "namaLahan" | "varietas" | "latitude" | "longitude" | "luasTotal" | "createdAt" | "updatedAt", ExtArgs["result"]["lahan"]>
   export type LahanInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     blok?: boolean | Lahan$blokArgs<ExtArgs>
     _count?: boolean | LahanCountOutputTypeDefaultArgs<ExtArgs>
@@ -2747,6 +2758,7 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id: string
       namaLahan: string
+      varietas: string | null
       latitude: number
       longitude: number
       luasTotal: number
@@ -3178,6 +3190,7 @@ export namespace Prisma {
   interface LahanFieldRefs {
     readonly id: FieldRef<"Lahan", 'String'>
     readonly namaLahan: FieldRef<"Lahan", 'String'>
+    readonly varietas: FieldRef<"Lahan", 'String'>
     readonly latitude: FieldRef<"Lahan", 'Float'>
     readonly longitude: FieldRef<"Lahan", 'Float'>
     readonly luasTotal: FieldRef<"Lahan", 'Float'>
@@ -18739,6 +18752,7 @@ export namespace Prisma {
   export const LahanScalarFieldEnum: {
     id: 'id',
     namaLahan: 'namaLahan',
+    varietas: 'varietas',
     latitude: 'latitude',
     longitude: 'longitude',
     luasTotal: 'luasTotal',
@@ -19072,6 +19086,7 @@ export namespace Prisma {
     NOT?: LahanWhereInput | LahanWhereInput[]
     id?: StringFilter<"Lahan"> | string
     namaLahan?: StringFilter<"Lahan"> | string
+    varietas?: StringNullableFilter<"Lahan"> | string | null
     latitude?: FloatFilter<"Lahan"> | number
     longitude?: FloatFilter<"Lahan"> | number
     luasTotal?: FloatFilter<"Lahan"> | number
@@ -19083,6 +19098,7 @@ export namespace Prisma {
   export type LahanOrderByWithRelationInput = {
     id?: SortOrder
     namaLahan?: SortOrder
+    varietas?: SortOrderInput | SortOrder
     latitude?: SortOrder
     longitude?: SortOrder
     luasTotal?: SortOrder
@@ -19097,6 +19113,7 @@ export namespace Prisma {
     OR?: LahanWhereInput[]
     NOT?: LahanWhereInput | LahanWhereInput[]
     namaLahan?: StringFilter<"Lahan"> | string
+    varietas?: StringNullableFilter<"Lahan"> | string | null
     latitude?: FloatFilter<"Lahan"> | number
     longitude?: FloatFilter<"Lahan"> | number
     luasTotal?: FloatFilter<"Lahan"> | number
@@ -19108,6 +19125,7 @@ export namespace Prisma {
   export type LahanOrderByWithAggregationInput = {
     id?: SortOrder
     namaLahan?: SortOrder
+    varietas?: SortOrderInput | SortOrder
     latitude?: SortOrder
     longitude?: SortOrder
     luasTotal?: SortOrder
@@ -19126,6 +19144,7 @@ export namespace Prisma {
     NOT?: LahanScalarWhereWithAggregatesInput | LahanScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"Lahan"> | string
     namaLahan?: StringWithAggregatesFilter<"Lahan"> | string
+    varietas?: StringNullableWithAggregatesFilter<"Lahan"> | string | null
     latitude?: FloatWithAggregatesFilter<"Lahan"> | number
     longitude?: FloatWithAggregatesFilter<"Lahan"> | number
     luasTotal?: FloatWithAggregatesFilter<"Lahan"> | number
@@ -20089,6 +20108,7 @@ export namespace Prisma {
   export type LahanCreateInput = {
     id?: string
     namaLahan: string
+    varietas?: string | null
     latitude: number
     longitude: number
     luasTotal: number
@@ -20100,6 +20120,7 @@ export namespace Prisma {
   export type LahanUncheckedCreateInput = {
     id?: string
     namaLahan: string
+    varietas?: string | null
     latitude: number
     longitude: number
     luasTotal: number
@@ -20111,6 +20132,7 @@ export namespace Prisma {
   export type LahanUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     namaLahan?: StringFieldUpdateOperationsInput | string
+    varietas?: NullableStringFieldUpdateOperationsInput | string | null
     latitude?: FloatFieldUpdateOperationsInput | number
     longitude?: FloatFieldUpdateOperationsInput | number
     luasTotal?: FloatFieldUpdateOperationsInput | number
@@ -20122,6 +20144,7 @@ export namespace Prisma {
   export type LahanUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     namaLahan?: StringFieldUpdateOperationsInput | string
+    varietas?: NullableStringFieldUpdateOperationsInput | string | null
     latitude?: FloatFieldUpdateOperationsInput | number
     longitude?: FloatFieldUpdateOperationsInput | number
     luasTotal?: FloatFieldUpdateOperationsInput | number
@@ -20133,6 +20156,7 @@ export namespace Prisma {
   export type LahanCreateManyInput = {
     id?: string
     namaLahan: string
+    varietas?: string | null
     latitude: number
     longitude: number
     luasTotal: number
@@ -20143,6 +20167,7 @@ export namespace Prisma {
   export type LahanUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     namaLahan?: StringFieldUpdateOperationsInput | string
+    varietas?: NullableStringFieldUpdateOperationsInput | string | null
     latitude?: FloatFieldUpdateOperationsInput | number
     longitude?: FloatFieldUpdateOperationsInput | number
     luasTotal?: FloatFieldUpdateOperationsInput | number
@@ -20153,6 +20178,7 @@ export namespace Prisma {
   export type LahanUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     namaLahan?: StringFieldUpdateOperationsInput | string
+    varietas?: NullableStringFieldUpdateOperationsInput | string | null
     latitude?: FloatFieldUpdateOperationsInput | number
     longitude?: FloatFieldUpdateOperationsInput | number
     luasTotal?: FloatFieldUpdateOperationsInput | number
@@ -21166,6 +21192,21 @@ export namespace Prisma {
     not?: NestedStringFilter<$PrismaModel> | string
   }
 
+  export type StringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
   export type FloatFilter<$PrismaModel = never> = {
     equals?: number | FloatFieldRefInput<$PrismaModel>
     in?: number[] | ListFloatFieldRefInput<$PrismaModel>
@@ -21194,6 +21235,11 @@ export namespace Prisma {
     none?: BlokWhereInput
   }
 
+  export type SortOrderInput = {
+    sort: SortOrder
+    nulls?: NullsOrder
+  }
+
   export type BlokOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
@@ -21201,6 +21247,7 @@ export namespace Prisma {
   export type LahanCountOrderByAggregateInput = {
     id?: SortOrder
     namaLahan?: SortOrder
+    varietas?: SortOrder
     latitude?: SortOrder
     longitude?: SortOrder
     luasTotal?: SortOrder
@@ -21217,6 +21264,7 @@ export namespace Prisma {
   export type LahanMaxOrderByAggregateInput = {
     id?: SortOrder
     namaLahan?: SortOrder
+    varietas?: SortOrder
     latitude?: SortOrder
     longitude?: SortOrder
     luasTotal?: SortOrder
@@ -21227,6 +21275,7 @@ export namespace Prisma {
   export type LahanMinOrderByAggregateInput = {
     id?: SortOrder
     namaLahan?: SortOrder
+    varietas?: SortOrder
     latitude?: SortOrder
     longitude?: SortOrder
     luasTotal?: SortOrder
@@ -21256,6 +21305,24 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedStringFilter<$PrismaModel>
     _max?: NestedStringFilter<$PrismaModel>
+  }
+
+  export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
   export type FloatWithAggregatesFilter<$PrismaModel = never> = {
@@ -21582,21 +21649,6 @@ export namespace Prisma {
     _max?: NestedEnumRoleUserFilter<$PrismaModel>
   }
 
-  export type StringNullableFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    mode?: QueryMode
-    not?: NestedStringNullableFilter<$PrismaModel> | string | null
-  }
-
   export type KehadiranPekerjaListRelationFilter = {
     every?: KehadiranPekerjaWhereInput
     some?: KehadiranPekerjaWhereInput
@@ -21607,11 +21659,6 @@ export namespace Prisma {
     every?: HasilKerjaPekerjaWhereInput
     some?: HasilKerjaPekerjaWhereInput
     none?: HasilKerjaPekerjaWhereInput
-  }
-
-  export type SortOrderInput = {
-    sort: SortOrder
-    nulls?: NullsOrder
   }
 
   export type KehadiranPekerjaOrderByRelationAggregateInput = {
@@ -21644,24 +21691,6 @@ export namespace Prisma {
     peran?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-  }
-
-  export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    mode?: QueryMode
-    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedStringNullableFilter<$PrismaModel>
-    _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
   export type PemakaianMaterialListRelationFilter = {
@@ -22057,6 +22086,10 @@ export namespace Prisma {
 
   export type StringFieldUpdateOperationsInput = {
     set?: string
+  }
+
+  export type NullableStringFieldUpdateOperationsInput = {
+    set?: string | null
   }
 
   export type FloatFieldUpdateOperationsInput = {
@@ -22693,10 +22726,6 @@ export namespace Prisma {
     connect?: HasilKerjaPekerjaWhereUniqueInput | HasilKerjaPekerjaWhereUniqueInput[]
   }
 
-  export type NullableStringFieldUpdateOperationsInput = {
-    set?: string | null
-  }
-
   export type KehadiranPekerjaUpdateManyWithoutPekerjaNestedInput = {
     create?: XOR<KehadiranPekerjaCreateWithoutPekerjaInput, KehadiranPekerjaUncheckedCreateWithoutPekerjaInput> | KehadiranPekerjaCreateWithoutPekerjaInput[] | KehadiranPekerjaUncheckedCreateWithoutPekerjaInput[]
     connectOrCreate?: KehadiranPekerjaCreateOrConnectWithoutPekerjaInput | KehadiranPekerjaCreateOrConnectWithoutPekerjaInput[]
@@ -23169,6 +23198,20 @@ export namespace Prisma {
     not?: NestedStringFilter<$PrismaModel> | string
   }
 
+  export type NestedStringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
   export type NestedFloatFilter<$PrismaModel = never> = {
     equals?: number | FloatFieldRefInput<$PrismaModel>
     in?: number[] | ListFloatFieldRefInput<$PrismaModel>
@@ -23217,6 +23260,34 @@ export namespace Prisma {
     gt?: number | IntFieldRefInput<$PrismaModel>
     gte?: number | IntFieldRefInput<$PrismaModel>
     not?: NestedIntFilter<$PrismaModel> | number
+  }
+
+  export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
+  }
+
+  export type NestedIntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
   export type NestedFloatWithAggregatesFilter<$PrismaModel = never> = {
@@ -23316,48 +23387,6 @@ export namespace Prisma {
     _max?: NestedEnumRoleUserFilter<$PrismaModel>
   }
 
-  export type NestedStringNullableFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    not?: NestedStringNullableFilter<$PrismaModel> | string | null
-  }
-
-  export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedStringNullableFilter<$PrismaModel>
-    _max?: NestedStringNullableFilter<$PrismaModel>
-  }
-
-  export type NestedIntNullableFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableFilter<$PrismaModel> | number | null
-  }
-
   export type NestedEnumStatusVerifikasiFilter<$PrismaModel = never> = {
     equals?: $Enums.StatusVerifikasi | EnumStatusVerifikasiFieldRefInput<$PrismaModel>
     in?: $Enums.StatusVerifikasi[] | ListEnumStatusVerifikasiFieldRefInput<$PrismaModel>
@@ -23436,6 +23465,7 @@ export namespace Prisma {
   export type LahanCreateWithoutBlokInput = {
     id?: string
     namaLahan: string
+    varietas?: string | null
     latitude: number
     longitude: number
     luasTotal: number
@@ -23446,6 +23476,7 @@ export namespace Prisma {
   export type LahanUncheckedCreateWithoutBlokInput = {
     id?: string
     namaLahan: string
+    varietas?: string | null
     latitude: number
     longitude: number
     luasTotal: number
@@ -23540,6 +23571,7 @@ export namespace Prisma {
   export type LahanUpdateWithoutBlokInput = {
     id?: StringFieldUpdateOperationsInput | string
     namaLahan?: StringFieldUpdateOperationsInput | string
+    varietas?: NullableStringFieldUpdateOperationsInput | string | null
     latitude?: FloatFieldUpdateOperationsInput | number
     longitude?: FloatFieldUpdateOperationsInput | number
     luasTotal?: FloatFieldUpdateOperationsInput | number
@@ -23550,6 +23582,7 @@ export namespace Prisma {
   export type LahanUncheckedUpdateWithoutBlokInput = {
     id?: StringFieldUpdateOperationsInput | string
     namaLahan?: StringFieldUpdateOperationsInput | string
+    varietas?: NullableStringFieldUpdateOperationsInput | string | null
     latitude?: FloatFieldUpdateOperationsInput | number
     longitude?: FloatFieldUpdateOperationsInput | number
     luasTotal?: FloatFieldUpdateOperationsInput | number

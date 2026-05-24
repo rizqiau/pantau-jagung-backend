@@ -3,12 +3,12 @@ import { addDays, differenceInDays } from "date-fns";
 import { AuditLogUseCase } from "../audit/AuditLogUseCase.js";
 export class LahanUseCase {
     static async createLahanBerjenjang(payload) {
-        const { namaLahan, latitude, longitude, tanggalTanam, blokList } = payload;
+        const { namaLahan, varietas, latitude, longitude, tanggalTanam, blokList } = payload;
         const tglTanam = new Date(tanggalTanam);
         const luasTotal = blokList.reduce((sum, blok) => sum + blok.luasBlok, 0);
         return await prisma.$transaction(async (tx) => {
             const lahan = await tx.lahan.create({
-                data: { namaLahan, latitude, longitude, luasTotal },
+                data: { namaLahan, varietas, latitude, longitude, luasTotal },
             });
             for (const blokData of blokList) {
                 const blok = await tx.blok.create({

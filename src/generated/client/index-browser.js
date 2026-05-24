@@ -123,6 +123,7 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
 exports.Prisma.LahanScalarFieldEnum = {
   id: 'id',
   namaLahan: 'namaLahan',
+  varietas: 'varietas',
   latitude: 'latitude',
   longitude: 'longitude',
   luasTotal: 'luasTotal',

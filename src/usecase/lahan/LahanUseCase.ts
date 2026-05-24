@@ -4,7 +4,7 @@ import { AuditLogUseCase } from "../audit/AuditLogUseCase.js";
 
 export class LahanUseCase {
   static async createLahanBerjenjang(payload: any) {
-    const { namaLahan, latitude, longitude, tanggalTanam, blokList } = payload;
+    const { namaLahan, varietas, latitude, longitude, tanggalTanam, blokList } = payload;
     const tglTanam = new Date(tanggalTanam);
     const luasTotal = blokList.reduce(
       (sum: number, blok: any) => sum + blok.luasBlok,
@@ -13,7 +13,7 @@ export class LahanUseCase {
 
     return await prisma.$transaction(async (tx) => {
       const lahan = await tx.lahan.create({
-        data: { namaLahan, latitude, longitude, luasTotal },
+        data: { namaLahan, varietas, latitude, longitude, luasTotal },
       });
 
       for (const blokData of blokList) {

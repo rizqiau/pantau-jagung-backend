@@ -37,6 +37,7 @@ enum RoleUser {
 model Lahan {
   id        String   @id @default(uuid())
   namaLahan String
+  varietas  String?
   latitude  Float
   longitude Float
   luasTotal Float 

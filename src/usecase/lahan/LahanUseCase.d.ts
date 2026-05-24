@@ -4,6 +4,7 @@ export declare class LahanUseCase {
         createdAt: Date;
         updatedAt: Date;
         namaLahan: string;
+        varietas: string | null;
         latitude: number;
         longitude: number;
         luasTotal: number;
@@ -13,6 +14,7 @@ export declare class LahanUseCase {
         createdAt: Date;
         updatedAt: Date;
         namaLahan: string;
+        varietas: string | null;
         latitude: number;
         longitude: number;
         luasTotal: number;
@@ -53,6 +55,7 @@ export declare class LahanUseCase {
         createdAt: Date;
         updatedAt: Date;
         namaLahan: string;
+        varietas: string | null;
         latitude: number;
         longitude: number;
         luasTotal: number;
@@ -62,6 +65,7 @@ export declare class LahanUseCase {
         createdAt: Date;
         updatedAt: Date;
         namaLahan: string;
+        varietas: string | null;
         latitude: number;
         longitude: number;
         luasTotal: number;
@@ -71,6 +75,7 @@ export declare class LahanUseCase {
         createdAt: Date;
         updatedAt: Date;
         namaLahan: string;
+        varietas: string | null;
         latitude: number;
         longitude: number;
         luasTotal: number;

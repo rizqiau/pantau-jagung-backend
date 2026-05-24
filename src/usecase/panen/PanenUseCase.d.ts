@@ -9,7 +9,7 @@ export declare class PanenUseCase {
             createdAt: Date;
             updatedAt: Date;
             tanggalTanam: Date;
-            status: import("@prisma/client").$Enums.StatusSiklus;
+            status: import("../../generated/client/index.js").$Enums.StatusSiklus;
             blokId: string;
             estimasiPanen: Date;
         };
@@ -23,7 +23,7 @@ export declare class PanenUseCase {
         siklusId: string;
         mandorId: string;
         catatan: string | null;
-        statusVerifikasi: import("@prisma/client").$Enums.StatusVerifikasi;
+        statusVerifikasi: import("../../generated/client/index.js").$Enums.StatusVerifikasi;
         diperiksaOleh: string | null;
         tanggalPanen: Date;
         beratHasil: number;
@@ -44,7 +44,7 @@ export declare class PanenUseCase {
             createdAt: Date;
             updatedAt: Date;
             tanggalTanam: Date;
-            status: import("@prisma/client").$Enums.StatusSiklus;
+            status: import("../../generated/client/index.js").$Enums.StatusSiklus;
             blokId: string;
             estimasiPanen: Date;
         };
@@ -61,7 +61,7 @@ export declare class PanenUseCase {
         siklusId: string;
         mandorId: string;
         catatan: string | null;
-        statusVerifikasi: import("@prisma/client").$Enums.StatusVerifikasi;
+        statusVerifikasi: import("../../generated/client/index.js").$Enums.StatusVerifikasi;
         diperiksaOleh: string | null;
         tanggalPanen: Date;
         beratHasil: number;
@@ -83,7 +83,7 @@ export declare class PanenUseCase {
         siklusId: string;
         mandorId: string;
         catatan: string | null;
-        statusVerifikasi: import("@prisma/client").$Enums.StatusVerifikasi;
+        statusVerifikasi: import("../../generated/client/index.js").$Enums.StatusVerifikasi;
         diperiksaOleh: string | null;
         tanggalPanen: Date;
         beratHasil: number;
@@ -105,7 +105,7 @@ export declare class PanenUseCase {
         siklusId: string;
         mandorId: string;
         catatan: string | null;
-        statusVerifikasi: import("@prisma/client").$Enums.StatusVerifikasi;
+        statusVerifikasi: import("../../generated/client/index.js").$Enums.StatusVerifikasi;
         diperiksaOleh: string | null;
         tanggalPanen: Date;
         beratHasil: number;

@@ -79,4 +79,6 @@ app.get("/api/reports/download-pdf", ReportController.downloadPdf);
 app.listen(PORT, () => {
     console.log(`[Server]: Berjalan di http://localhost:${PORT}`);
 });
+// Di bagian paling bawah src/index.ts
+export default app;
 //# sourceMappingURL=index.js.map

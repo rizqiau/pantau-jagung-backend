@@ -1,0 +1,253 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/client"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+// --- ENUMS ---
+enum StatusSiklus {
+  PERSIAPAN
+  VEGETATIF
+  GENERATIF
+  PANEN
+  SELESAI
+}
+
+enum StatusKegiatan {
+  TERJADWAL
+  SELESAI
+  TERLEWAT
+}
+
+enum StatusVerifikasi {
+  PENDING
+  APPROVED
+  REJECTED
+}
+
+enum RoleUser {
+  ASISTEN_LAPANGAN
+  MANDOR
+}
+
+// --- MODELS MASTER ---
+model Lahan {
+  id        String   @id @default(uuid())
+  namaLahan String
+  latitude  Float
+  longitude Float
+  luasTotal Float
+  blok      Blok[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Blok {
+  id          String        @id @default(uuid())
+  lahanId     String
+  namaBlok    String
+  luasBlok    Float
+  lahan       Lahan         @relation(fields: [lahanId], references: [id], onDelete: Cascade)
+  siklusTanam SiklusTanam[]
+
+  verifikasiMandor VerifikasiMandor[] // <-- Relasi balikan untuk Blok
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model SiklusTanam {
+  id              String            @id @default(uuid())
+  blokId          String
+  tanggalTanam    DateTime
+  estimasiPanen   DateTime
+  status          StatusSiklus      @default(PERSIAPAN)
+  blok            Blok              @relation(fields: [blokId], references: [id], onDelete: Cascade)
+  jadwalPerawatan JadwalPerawatan[]
+
+  // Relasi balik untuk Panen
+  panenRecord Panen[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model JadwalPerawatan {
+  id            String         @id @default(uuid())
+  siklusId      String
+  kegiatan      String
+  mingguKe      Int
+  tanggalJadwal DateTime
+  status        StatusKegiatan @default(TERJADWAL)
+  luasSelesai   Float          @default(0)
+  siklus        SiklusTanam    @relation(fields: [siklusId], references: [id], onDelete: Cascade)
+
+  // <-- Relasi balikan untuk JadwalPerawatan
+  aktivitasHarian  AktivitasHarian[]
+  verifikasiMandor VerifikasiMandor[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model User {
+  id       String   @id @default(uuid())
+  nama     String
+  username String   @unique
+  password String
+  role     RoleUser
+
+  // <-- Relasi balikan dengan Penamaan Khusus (Named Relations)
+  aktivitasHarian     AktivitasHarian[]  @relation("MandorInputHarian")
+  verifikasiDibuat    VerifikasiMandor[] @relation("MandorPembuatVerifikasi")
+  verifikasiDiperiksa VerifikasiMandor[] @relation("AsistenPemeriksa")
+
+  // Relasi balik untuk Panen
+  panenDibuat    Panen[] @relation("MandorInputPanen")
+  panenDiperiksa Panen[] @relation("AsistenPemeriksaPanen")
+
+  // Relasi balik untuk Audit Log
+  auditLogs AuditLog[] @relation("UserAuditLogs")
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model PekerjaHarian {
+  id    String  @id @default(uuid())
+  nama  String
+  peran String?
+
+  // <-- Relasi balikan untuk Pekerja Harian
+  kehadiranPekerja  KehadiranPekerja[]
+  hasilKerjaPekerja HasilKerjaPekerja[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model KatalogMaterial {
+  id           String              @id @default(uuid())
+  namaMaterial String
+  kategori     String
+  satuan       String
+  hargaSatuan  Float
+  stok         Float               @default(0)
+  pemakaian    PemakaianMaterial[]
+  createdAt    DateTime            @default(now())
+  updatedAt    DateTime            @updatedAt
+}
+
+// ====================================================================
+// TRANSAKSI 1: INPUT HARIAN (FOKUS BIAYA, MATERIAL & TOTAL PROGRESS)
+// ====================================================================
+model AktivitasHarian {
+  id                 String   @id @default(uuid())
+  jadwalId           String
+  mandorId           String
+  tanggal            DateTime
+  luasDikerjakan     Float
+  totalBiayaPekerja  Float    @default(0)
+  totalBiayaMaterial Float    @default(0)
+
+  jadwal JadwalPerawatan @relation(fields: [jadwalId], references: [id], onDelete: Cascade)
+  mandor User            @relation("MandorInputHarian", fields: [mandorId], references: [id])
+
+  kehadiranPekerja  KehadiranPekerja[]
+  pemakaianMaterial PemakaianMaterial[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model KehadiranPekerja {
+  id          String @id @default(uuid())
+  aktivitasId String
+  pekerjaId   String
+  upahHarian  Float
+
+  aktivitas AktivitasHarian @relation(fields: [aktivitasId], references: [id], onDelete: Cascade)
+  pekerja   PekerjaHarian   @relation(fields: [pekerjaId], references: [id])
+}
+
+model PemakaianMaterial {
+  id          String @id @default(uuid())
+  aktivitasId String
+  materialId  String
+  jumlahPakai Float
+  hargaSatuan Float
+
+  aktivitas AktivitasHarian @relation(fields: [aktivitasId], references: [id], onDelete: Cascade)
+  material  KatalogMaterial @relation(fields: [materialId], references: [id])
+}
+
+// ====================================================================
+// TRANSAKSI 2: VERIFIKASI MANDOR (FOKUS QUALITY CONTROL & BUKTI FOTO)
+// ====================================================================
+model VerifikasiMandor {
+  id               String           @id @default(uuid())
+  blokId           String
+  jadwalId         String
+  mandorId         String
+  tanggal          DateTime
+  catatan          String?          @db.Text
+  statusVerifikasi StatusVerifikasi @default(PENDING)
+  diperiksaOleh    String?
+
+  blok             Blok            @relation(fields: [blokId], references: [id], onDelete: Cascade)
+  jadwal           JadwalPerawatan @relation(fields: [jadwalId], references: [id], onDelete: Cascade)
+  mandor           User            @relation("MandorPembuatVerifikasi", fields: [mandorId], references: [id])
+  asistenPemeriksa User?           @relation("AsistenPemeriksa", fields: [diperiksaOleh], references: [id])
+
+  hasilKerjaPekerja HasilKerjaPekerja[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model HasilKerjaPekerja {
+  id             String  @id @default(uuid())
+  verifikasiId   String
+  pekerjaId      String
+  luasDikerjakan Float
+  fotoBukti      String?
+
+  verifikasi VerifikasiMandor @relation(fields: [verifikasiId], references: [id], onDelete: Cascade)
+  pekerja    PekerjaHarian    @relation(fields: [pekerjaId], references: [id])
+}
+
+model Panen {
+  id               String           @id @default(uuid())
+  siklusId         String
+  tanggalPanen     DateTime
+  beratHasil       Float // Berat panen dalam kg
+  hargaJualPerKg   Float // Harga jual per kg (snapshot)
+  totalPendapatan  Float // Pendapatan kotor = beratHasil * hargaJualPerKg
+  kualitas         String // Kualitas/Grade jagung (contoh: "Grade A")
+  catatan          String?          @db.Text
+  statusVerifikasi StatusVerifikasi @default(PENDING)
+  mandorId         String
+  diperiksaOleh    String?
+
+  siklus           SiklusTanam @relation(fields: [siklusId], references: [id], onDelete: Cascade)
+  mandor           User        @relation("MandorInputPanen", fields: [mandorId], references: [id])
+  asistenPemeriksa User?       @relation("AsistenPemeriksaPanen", fields: [diperiksaOleh], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model AuditLog {
+  id        String   @id @default(uuid())
+  userId    String?
+  action    String // "CREATE" | "UPDATE" | "DELETE"
+  tableName String
+  recordId  String?
+  details   String?  @db.Text
+  timestamp DateTime @default(now())
+
+  user User? @relation("UserAuditLogs", fields: [userId], references: [id], onDelete: SetNull)
+}

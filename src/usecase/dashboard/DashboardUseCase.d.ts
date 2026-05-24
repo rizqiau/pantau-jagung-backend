@@ -25,7 +25,7 @@ export declare class DashboardUseCase {
                 createdAt: Date;
                 updatedAt: Date;
                 tanggalTanam: Date;
-                status: import("@prisma/client").$Enums.StatusSiklus;
+                status: import("../../generated/client/index.js").$Enums.StatusSiklus;
                 blokId: string;
                 estimasiPanen: Date;
             };
@@ -37,7 +37,7 @@ export declare class DashboardUseCase {
             siklusId: string;
             kegiatan: string;
             mingguKe: number;
-            status: import("@prisma/client").$Enums.StatusKegiatan;
+            status: import("../../generated/client/index.js").$Enums.StatusKegiatan;
             luasSelesai: number;
         })[];
         aktivitasTerakhir: ({
@@ -67,7 +67,7 @@ export declare class DashboardUseCase {
             id: string;
             namaBlok: string;
             luasBlok: number;
-            statusSiklus: import("@prisma/client").$Enums.StatusSiklus;
+            statusSiklus: import("../../generated/client/index.js").$Enums.StatusSiklus;
             jadwalId: string | null;
             kegiatanAktif: string | null;
             mingguKe: number | null;

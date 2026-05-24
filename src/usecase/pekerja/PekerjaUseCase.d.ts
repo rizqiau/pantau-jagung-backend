@@ -3,14 +3,14 @@ export declare class PekerjaUseCase {
         id: string;
         nama: string;
         username: string;
-        role: import("@prisma/client").$Enums.RoleUser;
+        role: import("../../generated/client/index.js").$Enums.RoleUser;
         createdAt: Date;
     }>;
     static getAllUsers(): Promise<{
         id: string;
         nama: string;
         username: string;
-        role: import("@prisma/client").$Enums.RoleUser;
+        role: import("../../generated/client/index.js").$Enums.RoleUser;
         createdAt: Date;
         updatedAt: Date;
     }[]>;
@@ -18,7 +18,7 @@ export declare class PekerjaUseCase {
         id: string;
         nama: string;
         username: string;
-        role: import("@prisma/client").$Enums.RoleUser;
+        role: import("../../generated/client/index.js").$Enums.RoleUser;
         createdAt: Date;
         updatedAt: Date;
     } | null>;
@@ -26,7 +26,7 @@ export declare class PekerjaUseCase {
         id: string;
         nama: string;
         username: string;
-        role: import("@prisma/client").$Enums.RoleUser;
+        role: import("../../generated/client/index.js").$Enums.RoleUser;
         updatedAt: Date;
     }>;
     static deleteUser(id: string, operatorId?: string | null): Promise<{
@@ -34,7 +34,7 @@ export declare class PekerjaUseCase {
         nama: string;
         username: string;
         password: string;
-        role: import("@prisma/client").$Enums.RoleUser;
+        role: import("../../generated/client/index.js").$Enums.RoleUser;
         createdAt: Date;
         updatedAt: Date;
     }>;

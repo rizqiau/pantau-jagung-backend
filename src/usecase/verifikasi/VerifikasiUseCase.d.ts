@@ -20,7 +20,7 @@ export declare class VerifikasiUseCase {
         mandorId: string;
         tanggal: Date;
         catatan: string | null;
-        statusVerifikasi: import("@prisma/client").$Enums.StatusVerifikasi;
+        statusVerifikasi: import("../../generated/client/index.js").$Enums.StatusVerifikasi;
         diperiksaOleh: string | null;
     }>;
     static getVerifikasiByBlok(blokId: string): Promise<({
@@ -52,7 +52,7 @@ export declare class VerifikasiUseCase {
         mandorId: string;
         tanggal: Date;
         catatan: string | null;
-        statusVerifikasi: import("@prisma/client").$Enums.StatusVerifikasi;
+        statusVerifikasi: import("../../generated/client/index.js").$Enums.StatusVerifikasi;
         diperiksaOleh: string | null;
     })[]>;
     static getVerifikasiPending(): Promise<({
@@ -84,7 +84,7 @@ export declare class VerifikasiUseCase {
         mandorId: string;
         tanggal: Date;
         catatan: string | null;
-        statusVerifikasi: import("@prisma/client").$Enums.StatusVerifikasi;
+        statusVerifikasi: import("../../generated/client/index.js").$Enums.StatusVerifikasi;
         diperiksaOleh: string | null;
     })[]>;
     static batasiAtauVerifikasiLaporan(id: string, asistenId: string, status: "APPROVED" | "REJECTED"): Promise<any>;

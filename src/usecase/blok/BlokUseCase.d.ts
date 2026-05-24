@@ -14,7 +14,7 @@ export declare class BlokUseCase {
         id: string;
         namaBlok: string;
         luasBlok: number;
-        statusSiklus: import("@prisma/client").$Enums.StatusSiklus;
+        statusSiklus: import("../../generated/client/index.js").$Enums.StatusSiklus;
         jadwalId: string | null;
         kegiatanAktif: string;
         mingguKe: number | null;
@@ -49,7 +49,7 @@ export declare class BlokUseCase {
         mandorId: string;
         tanggal: Date;
         catatan: string | null;
-        statusVerifikasi: import("@prisma/client").$Enums.StatusVerifikasi;
+        statusVerifikasi: import("../../generated/client/index.js").$Enums.StatusVerifikasi;
         diperiksaOleh: string | null;
     })[]>;
 }

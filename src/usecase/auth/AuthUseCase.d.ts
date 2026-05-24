@@ -9,7 +9,7 @@ export declare class AuthUseCase {
             id: string;
             nama: string;
             username: string;
-            role: import("@prisma/client").$Enums.RoleUser;
+            role: import("../../generated/client/index.js").$Enums.RoleUser;
         };
     }>;
 }

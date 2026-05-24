@@ -28,7 +28,7 @@ export declare class LahanUseCase {
                     siklusId: string;
                     kegiatan: string;
                     mingguKe: number;
-                    status: import("@prisma/client").$Enums.StatusKegiatan;
+                    status: import("../../generated/client/index.js").$Enums.StatusKegiatan;
                     luasSelesai: number;
                 }[];
             } & {
@@ -36,7 +36,7 @@ export declare class LahanUseCase {
                 createdAt: Date;
                 updatedAt: Date;
                 tanggalTanam: Date;
-                status: import("@prisma/client").$Enums.StatusSiklus;
+                status: import("../../generated/client/index.js").$Enums.StatusSiklus;
                 blokId: string;
                 estimasiPanen: Date;
             })[];

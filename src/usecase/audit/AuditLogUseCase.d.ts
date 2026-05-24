@@ -19,7 +19,7 @@ export declare class AuditLogUseCase {
         user: {
             id: string;
             nama: string;
-            role: import("@prisma/client").$Enums.RoleUser;
+            role: import("../../generated/client/index.js").$Enums.RoleUser;
         } | null;
     } & {
         id: string;
